@@ -22,8 +22,8 @@ var app = new Vue({
     ],
     cart: 0,
     buttonBgColor: "background-color: #1e95ea;",
-    stockBgColor: "background-color: #1e95ea;",
-    outOfStockBgColor: "background-color: #A9A9A9;"
+    enableColor: "background-color: #1e95ea;",
+    disableColor: "background-color: #A9A9A9;"
   },
   methods: {
     addToCart: function() {
@@ -34,6 +34,12 @@ var app = new Vue({
     },
     updateProduct: function(variantImage) {
       this.image = variantImage;
+    },
+    deleteToCart: function() {
+      if(this.cart>0) {
+        this.cart--;
+        this.inventory++;
+      }
     }
   }
 });

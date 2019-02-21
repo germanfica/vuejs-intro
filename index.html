@@ -45,14 +45,16 @@
           </ul>
 
           <div v-for="variant in variants" :key="variant.variantId">
-            <p @mouseover="updateProduct(variant.variantImage)" >{{ variant.variantColor }}</p>
+            <p @mouseover="updateProduct(variant.variantImage)">
+              {{ variant.variantColor }}
+            </p>
           </div>
 
           <!-- Button -->
           <button
             class="button"
             v-on:click="addToCart"
-            :style="inventory>0 ? stockBgColor : outOfStockBgColor"
+            :style="inventory>0 ? enableColor : disableColor"
           >
             Add to cart
           </button>
@@ -66,7 +68,21 @@
             Select boots
           </button>
 
-          <div class="cart">
+          <div
+            v-on:click="deleteToCart"
+            class="cart noselect"
+            style="
+            background-color: #1e95ea;
+            color: white;
+            cursor: pointer;"
+            :style="
+            cart>0 ? enableColor : disableColor
+            "
+          >
+            <p>-</p>
+          </div>
+
+          <div class="cart" style="margin-right: 5px">
             <p>Cart({{ cart }})</p>
           </div>
         </div>
