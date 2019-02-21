@@ -28,9 +28,25 @@
         <div class="product-info">
           <!-- Product name -->
           <h1>{{ product }}</h1>
-          <p v-if="inventory >= 10">In Stock</p>
+
+          <p v-if="inventory >= 10">
+            <span v-if="onSale">
+              On Sale!
+            </span>
+            In Stock
+          </p>
           <p v-else-if="inventory < 10 && inventory>0">Almost sold out!</p>
           <p v-else>Out of Stock</p>
+          <ul>
+            <li v-for="detail in details">
+              {{ detail }}
+            </li>
+          </ul>
+
+          <div v-for="variant in variants" :key="variant.variantId">
+            <p>{{ variant.variantColor }}</p>
+          </div>
+
           <!-- Button -->
           <button class="button" v-on:click="product='Socks';">
             Select socks
