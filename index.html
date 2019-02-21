@@ -6,11 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Product App</title>
 
-    <!-- https://mustard-ui.com/ -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/mustard-ui@latest/dist/css/mustard-ui.min.css"
-    />
+    <link rel="stylesheet" href="css/product_style.css" />
+
     <!-- https://daneden.github.io/animate.css/ -->
     <link
       rel="stylesheet"
@@ -20,19 +17,26 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
+    <div class="nav-bar"></div>
+    <!-- App -->
     <div id="app">
-      <div class="row">
-        <div class="col">
-          <h1 class="align-center">{{ product }}</h1>
+      <!-- Product -->
+      <div class="product">
+        <div class="product-image">
+          <a :href="link"><img v-bind:src="image" :alt="description"/></a>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col align-center">
-          <button class="align-center" v-on:click="product='Socks'">
+        <div class="product-info">
+          <!-- Product name -->
+          <h1>{{ product }}</h1>
+          <p v-if="inventory >= 10">In Stock</p>
+          <p v-else-if="inventory < 10 && inventory>0">Almost sold out!</p>
+          <p v-else>Out of Stock</p>
+          <!-- Button -->
+          <button class="button" v-on:click="product='Socks';">
             Select socks
           </button>
-          <button class="align-center" v-on:click="product='Boots'">
+          <!-- Button -->
+          <button class="button" v-on:click="product='Boots';">
             Select boots
           </button>
         </div>

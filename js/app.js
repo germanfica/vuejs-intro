@@ -1,20 +1,10 @@
 var app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
-    product: 'Socks'
+    product: "Socks",
+    image: "assets/TJd5pkUO.jpeg",
+    description: "image",
+    link: "https://germanfica.xyz/",
+    inventory: 100,
   }
-})
-
-function animateCss(element, animationName, callback) {
-  const node = document.querySelector(element)
-  node.classList.add('animated', animationName)
-
-  function handleAnimationEnd() {
-      node.classList.remove('animated', animationName)
-      node.removeEventListener('animationend', handleAnimationEnd)
-
-      if (typeof callback === 'function') callback()
-  }
-
-  node.addEventListener('animationend', handleAnimationEnd)
-}
+});
